@@ -16,6 +16,10 @@ router.get('/instructors/create', function (req, res) {
 
 router.get('/instructors/:id', instructors.show)
 
+router.get('/instructors/:id/edit', function(req,res) {
+    return res.render('instructors/edit')
+})
+
 router.post('/instructors', instructors.post)
 
 router.get('/members', function (req, res) {
