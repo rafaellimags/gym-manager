@@ -81,20 +81,4 @@ exports.edit = function(req, res) {
     if (!foundInstructor) return res.send('Instructor nor found!')
 
     return res.render('instructors/edit', { instructor })
-
-    // const { id } = req.params
-    // const found = data.instructors.find(function(instructor) {
-    //     return instructor.id == id
-    // })
-
-    // if (!found) return res.send('instructor not found')
-
-    // const instructor = {
-    //     ...found,
-    //     age: age(found.birth), // calcular idade
-    //     services: found.services.split(','),
-    //     created_at: new Intl.DateTimeFormat('pt-BR').format(found.created_at)
-    // }
-
-    // return res.render('instructors/edit', { instructor })
 }
