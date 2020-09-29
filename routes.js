@@ -16,9 +16,7 @@ router.get('/instructors/create', function (req, res) {
 
 router.get('/instructors/:id', instructors.show)
 
-router.get('/instructors/:id/edit', function(req,res) {
-    return res.render('instructors/edit')
-})
+router.get('/instructors/:id/edit', instructors.edit)
 
 router.post('/instructors', instructors.post)
 
