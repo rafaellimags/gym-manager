@@ -2,6 +2,7 @@
 const express = require('express')
 const nunjucks = require('nunjucks')
 const router = require('./routes')
+const methodOverride = require('method-override')
 
 const server = express()
 
@@ -16,6 +17,7 @@ server.set("view engine", "njk")
 /* ====== MIDDLEWARE ====== */
 server.use(express.urlencoded({ extended: true })) // Lê e mostra os dados da requisição
 server.use(express.static("public"))
+server.use(methodOverride('_method'))
 server.use(router)
 
 /* ====== MIDDLEWARE ====== */

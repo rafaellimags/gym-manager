@@ -20,6 +20,8 @@ router.get('/instructors/:id/edit', instructors.edit)
 
 router.post('/instructors', instructors.post)
 
+router.put('/instructors', instructors.put)
+
 router.get('/members', function (req, res) {
     return res.render('members')
 })
