@@ -22,6 +22,8 @@ router.post('/instructors', instructors.post)
 
 router.put('/instructors', instructors.put)
 
+router.delete('/instructors', instructors.delete)
+
 router.get('/members', function (req, res) {
     return res.render('members')
 })
