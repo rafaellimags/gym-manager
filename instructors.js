@@ -2,6 +2,11 @@ const fs = require('fs')
 const data = require('./data.json')
 const { age, date } = require('./utils')
 
+
+// lista
+exports.index = function(req, res) {
+    res.render('instructors/index', { instructors: data.instructors })
+}
 // create
 exports.post = function (req, res) {
     const keys = Object.keys(req.body)
@@ -92,13 +97,12 @@ exports.put = function(req, res) {
 
     if (!foundInstructor) return res.send('Instructor not found')
 
-    console.log(index)
-
     // mantém a estrutura
     const instructor = {
         ...foundInstructor, // manda os dados de instrutor que ja estao salvos
         ...req.body, // manda somente os dados que quer salvar
-        birth: Date.parse(req.body.birth)
+        birth: Date.parse(req.body.birth),
+        id: Number(req.body.id)
     }
 
     data.instructors[index] = instructor // procura no array de structors o instrutor para alterar
@@ -123,8 +127,6 @@ exports.delete = function(req, res) {
 
     fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err) {
         if (err) return res.send('Error writing file.')
-
-        console.log('Passou')
 
         return res.redirect('/instructors')
     })

@@ -6,9 +6,7 @@ router.get('/', function (req, res) {
     return res.redirect('/instructors') // o metodo redirect() retorna o parametro para a barra de pesquisa
 });
 
-router.get('/instructors', function (req, res) {
-    return res.render('instructors/index')
-})
+router.get('/instructors', instructors.index)
 
 router.get('/instructors/create', function (req, res) {
     return res.render('instructors/create')

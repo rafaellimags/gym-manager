@@ -3,83 +3,20 @@
     {
       "id": 1,
       "name": "Rafael",
-      "avatar_url": "http://url.example.com",
-      "birth": 1600128000000,
-      "gender": "F",
-      "services": "services",
+      "avatar_url": "https://images.unsplash.com/photo-1580261450046-d0a30080dc9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=653&q=80",
+      "birth": 664761600000,
+      "gender": "M",
+      "services": "Crossfit, Funcional, Corrida",
       "created_at": 1600195203388
     },
     {
       "id": 2,
       "name": "Rafael Lima",
-      "avatar_url": "http://url.example.com",
-      "birth": 1600128000000,
+      "avatar_url": "https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "birth": 772502400000,
       "gender": "M",
-      "services": "services",
+      "services": "Musculação",
       "created_at": 1600195439920
-    },
-    {
-      "id": 3,
-      "name": "Rafael Lima",
-      "avatar_url": "http://url.example.com",
-      "birth": 1600128000000,
-      "gender": "M",
-      "services": "Crossfit, Bike, Swimming",
-      "created_at": 1600200418881
-    },
-    {
-      "id": 4,
-      "name": "Fulano",
-      "avatar_url": "http://url.example.com",
-      "birth": 1262304000000,
-      "gender": "M",
-      "services": "services",
-      "created_at": 1600203642696
-    },
-    {
-      "id": 5,
-      "name": "Pessoa",
-      "avatar_url": "https://source.unsplash.com/collection/3465564/500x500",
-      "birth": 664761600000,
-      "gender": "F",
-      "services": "Crossfit, Funcional, Musculação",
-      "created_at": 1600374986216
-    },
-    {
-      "id": 6,
-      "name": "Pessoa",
-      "avatar_url": "http://url.example.com",
-      "birth": 685065600000,
-      "gender": "M",
-      "services": "Bike",
-      "created_at": 1600375408426
-    },
-    {
-      "id": 7,
-      "name": "Rafael Lima",
-      "avatar_url": "http://url.example.com",
-      "birth": 970185600000,
-      "gender": "M",
-      "services": "Crossfit, Funcional, Musculação",
-      "created_at": 1601382525978
-    },
-    {
-      "id": 8,
-      "name": "Rafael Lima",
-      "avatar_url": "http://url.example.com",
-      "birth": 970272000000,
-      "gender": "M",
-      "services": "Smimming",
-      "created_at": 1601382552650
-    },
-    {
-      "id": "9",
-      "name": "Rafael Lima HHH",
-      "avatar_url": "http://url.example.com",
-      "birth": 970358400000,
-      "gender": "M",
-      "services": "Smimming",
-      "created_at": 1601382586818
     }
   ]
 }
