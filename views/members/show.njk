@@ -10,7 +10,7 @@
         <h3>Detalhes</h3>
 
         <div class="item">
-            <div>Instrutor</div>
+            <div>Membro</div>
             <div>{{ member.name }}</div>
         </div>
 
@@ -24,14 +24,26 @@
             <div>{{ "Masculino" if member.gender == "M" else "Feminino" }}</div>
         </div>
 
-        {# <div class="item">
-            <div>Acompanhamento</div>
-            <div>
-                {% for service in member.services %}
-                <span>{{ service }}</span>
-                {% endfor %}
-            </div>
-        </div> #}
+        <div class="item">
+            <div>Tipo sanguíneo</div>
+            <div>{% if member.blood == "O1" %} O-
+            {% endif %}</div>
+        </div>
+
+        <div class="item">
+            <div>Peso</div>
+            <div>{{ member.weight }}</div>
+        </div>
+
+        <div class="item">
+            <div>Altura</div>
+            <div>{{ member.height }}</div>
+        </div>
+
+        <div class="item">
+            <div>E-mail</div>
+            <div>{{ member.email }}</div>
+        </div>
 
         <div class="item">
             <div>Desde</div>

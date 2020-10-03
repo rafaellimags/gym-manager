@@ -1,7 +1,6 @@
 const currentPage = location.pathname;
 const menuItems = document.querySelectorAll('header .links a');
 
-
 // need to compare one variable with another
 // the query brings all child elements. this is to get one by one
 for (let item of menuItems) {

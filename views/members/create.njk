@@ -7,7 +7,9 @@
 
             <h3>Novo Membro</h3>
 
-            <div class="item">
+            {% include 'members/fields.njk' %}
+
+            {# <div class="item">
                 <div>Avatar URL</div>
                 <div>
                     <input 
@@ -19,12 +21,12 @@
             </div>
 
             <div class="item">
-                <div>Instrutor</div>
+                <div>Membro</div>
                 <div>
                     <input 
                         type="text"
                         name="name"
-                        placeholder="Nome do instrutor"
+                        placeholder="Nome do aluno"
                     >
                 </div>
             </div>
@@ -41,20 +43,9 @@
                 <div>Gênero</div>
                 <span><input type="radio" name="gender" value="M" >Masculino</span>
                 <span><input type="radio" name="gender" value="F" >Feminino</span>
-            </div>
-
-            {# <div class="item">
-                <div>Área de atuação</div>
-                <div>
-                    <input 
-                        type="text" 
-                        name="services"
-                        placeholder="Separe os servicos por vírgula"
-                    >
-                </div>
             </div> #}
 
-            <button type="submit">Salvar</button>
+            {# <button type="submit">Salvar</button> #}
 
         </section>
     </form>

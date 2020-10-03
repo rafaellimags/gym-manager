@@ -2,23 +2,38 @@
   "members": [
     {
       "id": 1,
-      "name": "Membro01",
-      "avatar_url": "https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-      "birth": 769478400000,
+      "name": "Membro00",
+      "avatar_url": "https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "birth": 738115200000,
+      "gender": "F",
+      "created_at": 1601759193207
+    },
+    {
+      "id": 3,
+      "name": "Rafael Lima",
+      "email": "teste@teste.com",
+      "blood": "AB1",
+      "weight": "123",
+      "height": "123",
+      "avatar_url": "https://images.unsplash.com/photo-1580261450046-d0a30080dc9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=653&q=80",
+      "birth": 889660800000,
       "gender": "M",
-      "created_at": 1601722520248
+      "created_at": 1601767887848
+    },
+    {
+      "id": 4,
+      "name": "Rafael Lima",
+      "email": "teste@teste.com",
+      "blood": "B0",
+      "weight": "123",
+      "height": "123",
+      "avatar_url": "https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "birth": 825033600000,
+      "gender": "F",
+      "created_at": 1601767943590
     }
   ],
   "instructors": [
-    {
-      "id": 1,
-      "name": "Rafael",
-      "avatar_url": "https://images.unsplash.com/photo-1580261450046-d0a30080dc9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=653&q=80",
-      "birth": 664761600000,
-      "gender": "M",
-      "services": "Crossfit, Funcional, Corrida",
-      "created_at": 1600195203388
-    },
     {
       "id": 2,
       "name": "Rafael Lima",
@@ -30,12 +45,12 @@
     },
     {
       "id": 3,
-      "name": "Rafael Lima",
+      "name": "qeqe",
       "avatar_url": "https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-      "birth": 740793600000,
+      "birth": 921196800000,
       "gender": "M",
-      "services": "Bike",
-      "created_at": 1601722564513
+      "services": "Crossfit",
+      "created_at": 1601768913979
     }
   ]
 }

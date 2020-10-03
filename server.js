@@ -17,6 +17,8 @@ server.set("view engine", "njk")
 /* ====== MIDDLEWARE ====== */
 server.use(express.urlencoded({ extended: true })) // Lê e mostra os dados da requisição
 server.use(express.static("public"))
+// app.use(função de middlaware obrigatória)
+
 server.use(methodOverride('_method'))
 server.use(router)
 
