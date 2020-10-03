@@ -8,28 +8,28 @@ exports.index = function(req, res) {
 }
 
 exports.show = function (req, res) {
-    const { id } = req.params //pega somente o id passado na uri
-    const foundMember = data.members.find(function(member) { // busca o instrutor no array de dados
-        return member.id == id // retorna o objeto da execução onde ele achou true. No caso, members.
-        // if (member.id == id) {
-        //     return member
-        // }
+    const { id } = req.params
+    const foundMember = data.members.find(function(member) {
+        return member.id == id
+        
     })
 
-    if (!foundMember) return res.send('Instrutor não encontrado')
+    if (!foundMember) return res.send('Membro não encontrado')
 
     const member = {
         ...foundMember,
-        age: age(foundMember.birth), // calcular idade
-        // created_at: new Intl.DateTimeFormat('pt-BR').format(foundMember.created_at)
+        age: age(foundMember.birth),
+        created_at: Intl.DateTimeFormat('pt-br').format(foundMember.created_at)
     }
+
+    console.log(member.avatar_url)
 
     return res.render("members/show", { member })
 
 }
 
 exports.create = function(req, res) {
-    return res.render('/members/create')
+    return res.render('members/create')
 }
 
 exports.post = function (req, res) {
@@ -54,7 +54,6 @@ exports.post = function (req, res) {
         avatar_url,
         birth,
         gender,
-        services,
         created_at
     })
 
@@ -96,15 +95,14 @@ exports.put = function(req, res) {
 
     if (!foundMember) return res.send('Member not found')
 
-    // mantém a estrutura
     const member = {
-        ...foundMember, // manda os dados de instrutor que ja estao salvos
-        ...req.body, // manda somente os dados que quer salvar
+        ...foundMember,
+        ...req.body,
         birth: Date.parse(req.body.birth),
         id: Number(req.body.id)
     }
 
-    data.members[index] = member // procura no array de structors o instrutor para alterar
+    data.members[index] = member
 
     fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err){
         if (err) return res.send('Error writing file')
