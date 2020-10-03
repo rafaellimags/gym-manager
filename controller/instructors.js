@@ -1,13 +1,38 @@
 const fs = require('fs')
-const data = require('./data.json')
-const { age, date } = require('./utils')
+const data = require('../data.json')
+const { age, date } = require('../utils')
 
 
-// lista
 exports.index = function(req, res) {
     res.render('instructors/index', { instructors: data.instructors })
 }
-// create
+
+exports.show = function (req, res) {
+    const { id } = req.params //pega somente o id passado na uri
+    const foundInstructor = data.instructors.find(function(instructor) { // busca o instrutor no array de dados
+        return instructor.id == id // retorna o objeto da execução onde ele achou true. No caso, instructors.
+        // if (instructor.id == id) {
+        //     return instructor
+        // }
+    })
+
+    if (!foundInstructor) return res.send('Instrutor não encontrado');
+
+    const instructor = {
+        ...foundInstructor,
+        age: age(foundInstructor.birth), // calcular idade
+        services: foundInstructor.services.split(','),
+        created_at: new Intl.DateTimeFormat('pt-BR').format(foundInstructor.created_at)
+    }
+
+    return res.render("instructors/show", { instructor })
+
+}
+
+exports.create = function(req, res) {
+    return res.render('instructors/create')
+}
+
 exports.post = function (req, res) {
     const keys = Object.keys(req.body)
 
@@ -42,30 +67,6 @@ exports.post = function (req, res) {
 
 }
 
-// show
-exports.show = function (req, res) {
-    const { id } = req.params //pega somente o id passado na uri
-    const foundInstructor = data.instructors.find(function(instructor) { // busca o instrutor no array de dados
-        return instructor.id == id // retorna o objeto da execução onde ele achou true. No caso, instructors.
-        // if (instructor.id == id) {
-        //     return instructor
-        // }
-    })
-
-    if (!foundInstructor) return res.send('Instrutor não encontrado')
-
-    const instructor = {
-        ...foundInstructor,
-        age: age(foundInstructor.birth), // calcular idade
-        services: foundInstructor.services.split(','),
-        created_at: new Intl.DateTimeFormat('pt-BR').format(foundInstructor.created_at)
-    }
-
-    return res.render("instructors/show", { instructor })
-
-}
-
-// edit
 exports.edit = function(req, res) {
 
     const { id } = req.params
@@ -84,7 +85,6 @@ exports.edit = function(req, res) {
     return res.render('instructors/edit', { instructor })
 }
 
-// put
 exports.put = function(req, res) {
     const { id } = req.body
     let index = 0
@@ -115,7 +115,6 @@ exports.put = function(req, res) {
 
 }
 
-// delete
 exports.delete = function(req, res) {
     const { id } = req.body
 
