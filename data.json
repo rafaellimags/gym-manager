@@ -1,36 +1,16 @@
 {
   "members": [
     {
-      "id": 1,
-      "name": "Membro00",
-      "avatar_url": "https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-      "birth": 738115200000,
-      "gender": "F",
-      "created_at": 1601759193207
-    },
-    {
-      "id": 3,
+      "avatar_url": "https://source.unsplash.com/collection/3465564/500x500",
       "name": "Rafael Lima",
       "email": "teste@teste.com",
-      "blood": "AB1",
-      "weight": "123",
-      "height": "123",
-      "avatar_url": "https://images.unsplash.com/photo-1580261450046-d0a30080dc9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=653&q=80",
-      "birth": 889660800000,
+      "birth": 682905600000,
       "gender": "M",
-      "created_at": 1601767887848
-    },
-    {
-      "id": 4,
-      "name": "Rafael Lima",
-      "email": "teste@teste.com",
-      "blood": "B0",
-      "weight": "123",
-      "height": "123",
-      "avatar_url": "https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-      "birth": 825033600000,
-      "gender": "F",
-      "created_at": 1601767943590
+      "blood": "O1",
+      "weight": "74",
+      "height": "183",
+      "id": 1,
+      "created_at": 1601770722787
     }
   ],
   "instructors": [

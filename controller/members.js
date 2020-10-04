@@ -40,28 +40,25 @@ exports.post = function (req, res) {
         }
     }
 
-    let { avatar_url, birth, name, email, blood, weight, height, gender } = req.body
+    // don't need this line as we wil accept every data that comes from the body
+    // let { avatar_url, birth, name, email, blood, weight, height, gender } = req.body
 
-    birth = Date.parse(birth)
+    birth = Date.parse(req.body.birth)
     const created_at = Date.now()
     // const id = Number(data.members.length + 1)
     let id = 1
-    const lastId = data.members[data.members.length - 1].id
+    const lastMember = data.members[data.members.length - 1]
 
-    if (lastId) {
-        id = lastId + 1
+    if (lastMember) {
+        id = lastMember.id + 1
     }
 
+    // destructuring the body makes variable inside it
+    //apread all over the object, and all equals variable will overwrite the variables already in the object with their data.
     data.members.push({
-        id,
-        name,
-        email,
-        blood,
-        weight,
-        height,
-        avatar_url,
+        ...req.body,
+        id,        
         birth,
-        gender,
         created_at
     })
 

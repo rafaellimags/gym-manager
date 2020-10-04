@@ -50,10 +50,10 @@ exports.post = function (req, res) {
     // const id = Number(data.instructors.length + 1)
 
     let id = 1
-    const lastId = data.instructors[data.instructors.length - 1].id
+    const lastInstructor = data.instructors[data.instructors.length - 1]
 
-    if (lastId) {
-        id = lastId + 1
+    if (lastInstructor) {
+        id = lastInstructor.id + 1
     }
 
     data.instructors.push({
