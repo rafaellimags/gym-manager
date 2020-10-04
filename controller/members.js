@@ -56,8 +56,8 @@ exports.post = function (req, res) {
     // destructuring the body makes variable inside it
     //apread all over the object, and all equals variable will overwrite the variables already in the object with their data.
     data.members.push({
+        id,
         ...req.body,
-        id,        
         birth,
         created_at
     })
@@ -80,7 +80,7 @@ exports.edit = function (req, res) {
 
     const member = {
         ...foundMember,
-        birth: date(foundMember.birth)
+        birth: date(foundMember.birth).iso
     }
 
     if (!foundMember) return res.send('Member nor found!')

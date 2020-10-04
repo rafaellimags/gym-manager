@@ -84,7 +84,7 @@ exports.edit = function(req, res) {
 
     const instructor = {
         ...foundInstructor,
-        birth: date(foundInstructor.birth)
+        birth: date(foundInstructor.birth).iso // Every function that return an object, we can catch the object prop this way: function xpto().objPro
     }
 
     if (!foundInstructor) return res.send('Instructor nor found!')
