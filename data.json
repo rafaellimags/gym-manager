@@ -1,28 +1,28 @@
 {
   "members": [
     {
-      "avatar_url": "https://source.unsplash.com/collection/3465564/500x500",
-      "name": "Rafael Lima",
-      "email": "",
-      "birth": 958953600000,
-      "gender": "M",
-      "blood": "O1",
-      "weight": "74",
-      "height": "183",
       "id": 1,
-      "created_at": 1601770722787
+      "avatar_url": "https://images.unsplash.com/photo-1550345332-09e3ac987658?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "name": "Ana",
+      "email": "ana@email.com.br",
+      "birth": 29,
+      "gender": "F",
+      "blood": "O1",
+      "weight": "67",
+      "height": "168",
+      "created_at": 1601940000385
     },
     {
-      "id": 2,
+      "id": 3,
       "avatar_url": "https://source.unsplash.com/collection/3465564/500x500",
       "name": "Rafael Lima",
       "email": "teste@teste.com",
-      "birth": 959040000000,
+      "birth": 757382400000,
       "gender": "M",
       "blood": "O1",
-      "weight": "100",
-      "height": "191",
-      "created_at": 1601771851821
+      "weight": "123",
+      "height": "123",
+      "created_at": 1601943147355
     }
   ],
   "instructors": [

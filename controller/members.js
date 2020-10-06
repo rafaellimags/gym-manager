@@ -4,6 +4,17 @@ const { age, date } = require('../utils')
 
 
 exports.index = function (req, res) {
+
+    let members = [
+        ...data.members
+    ]
+
+    for (let member of members) {
+        member.birth = age(member.birth)
+    }
+
+    console.log(members)
+
     res.render('members/index', { members: data.members })
 }
 
@@ -118,6 +129,7 @@ exports.put = function (req, res) {
 }
 
 exports.delete = function (req, res) {
+
     const { id } = req.body
 
     const filteredMembers = data.members.filter(function (members) {
