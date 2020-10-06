@@ -1,21 +1,14 @@
 <div class="item">
-    <div>Avatar URL</div>
+    <div>Link da imagem</div>
     <div>
         <input type="url" name="avatar_url" placeholder="http://" value="{{ member.avatar_url }}">
     </div>
 </div>
 
 <div class="item">
-    <div>Membro</div>
+    <div>Nome</div>
     <div>
-        <input type="text" name="name" placeholder="Editar instrutor" value="{{ member.name }}">
-    </div>
-</div>
-
-<div class="item">
-    <div>E-mail</div>
-    <div>
-        <input type="email" name="email" value="{{ member.email }}">
+        <input type="text" name="name" value="{{ member.name }}">
     </div>
 </div>
 
@@ -43,7 +36,7 @@
 <div class="item">
     <div>Tipo sanguíneo</div>
     <select name="blood" >
-        <option value="">Selecione uma opção</option>
+        <option value=""></option>
 
         <option value="A0" 
             {% if member.blood == "A0" %} 
@@ -105,7 +98,7 @@
 </div>
 
 <div class="item">
-    <div>Peso</div>
+    <div>Peso (kg)</div>
     <div>
         <input type="number" name="weight" value="{{ member.weight }}">
     </div>
@@ -115,6 +108,13 @@
     <div>Altura (cm)</div>
     <div>
         <input type="number" name="height" value="{{ member.height }}">
+    </div>
+</div>
+
+<div class="item">
+    <div>E-mail</div>
+    <div>
+        <input type="email" name="email" value="{{ member.email }}">
     </div>
 </div>
 

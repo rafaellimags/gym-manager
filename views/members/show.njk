@@ -10,7 +10,7 @@
         <h3>Detalhes</h3>
 
         <div class="item">
-            <div>Membro</div>
+            <div>Nome</div>
             <div>{{ member.name }}</div>
         </div>
 
@@ -20,14 +20,22 @@
         </div>
 
         <div class="item">
-            <div>Sexo</div>
+            <div>Gênero</div>
             <div>{{ "Masculino" if member.gender == "M" else "Feminino" }}</div>
         </div>
 
         <div class="item">
             <div>Tipo sanguíneo</div>
-            <div>{% if member.blood == "O1" %} O-
-            {% endif %}</div>
+            <div>
+                {% if member.blood == "A0"  %} A+  {% endif %}
+                {% if member.blood == "A1"  %} A-  {% endif %}
+                {% if member.blood == "B0"  %} B+  {% endif %}
+                {% if member.blood == "B1"  %} B-  {% endif %}
+                {% if member.blood == "AB0" %} AB+ {% endif %}
+                {% if member.blood == "AB1" %} AB- {% endif %}
+                {% if member.blood == "O0"  %} O+  {% endif %}
+                {% if member.blood == "O1"  %} O-  {% endif %}
+            </div>
         </div>
 
         <div class="item">

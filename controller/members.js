@@ -27,6 +27,8 @@ exports.show = function (req, res) {
 
     if (!foundMember) return res.send('Membro não encontrado')
 
+    console.log(foundMember)
+
     const member = {
         ...foundMember,
         age: age(foundMember.birth),
