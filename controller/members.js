@@ -5,16 +5,6 @@ const { age, date } = require('../utils')
 
 exports.index = function (req, res) {
 
-    let members = [
-        ...data.members
-    ]
-
-    for (let member of members) {
-        member.birth = age(member.birth)
-    }
-
-    console.log(members)
-
     res.render('members/index', { members: data.members })
 }
 
@@ -26,8 +16,6 @@ exports.show = function (req, res) {
     })
 
     if (!foundMember) return res.send('Membro não encontrado')
-
-    console.log(foundMember)
 
     const member = {
         ...foundMember,
