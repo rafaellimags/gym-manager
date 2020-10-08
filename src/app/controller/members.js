@@ -1,136 +1,55 @@
-const fs = require('fs')
-const data = require('../data.json')
-const { age, date } = require('../utils')
+const { age, date } = require('../../lib/utils')
 
+module.exports = {
+    index(req, res) {
 
-exports.index = function (req, res) {
+        res.render('members/index')
 
-    res.render('members/index', { members: data.members })
-}
+    },
+    create(req, res) {
 
-exports.show = function (req, res) {
-    const { id } = req.params
-    const foundMember = data.members.find(function (member) {
-        return member.id == id
+        return res.render('members/create')
 
-    })
+    },
+    post(req, res) {
 
-    if (!foundMember) return res.send('Membro não encontrado')
+        const keys = Object.keys(req.body)
 
-    const member = {
-        ...foundMember,
-        age: age(foundMember.birth),
-        created_at: Intl.DateTimeFormat('pt-br').format(foundMember.created_at)
-    }
-
-    return res.render("members/show", { member })
-
-}
-
-exports.create = function (req, res) {
-    return res.render('members/create')
-}
-
-exports.post = function (req, res) {
-    const keys = Object.keys(req.body)
-
-    for (key of keys) {
-
-        if (req.body[key] == "") {
-            return res.send('Please, fill all required fields.')
+        for (key of keys) {
+            if (req.body[key] == "") {
+                return res.send('Please, fill all required fields.')
+            }
         }
-    }
 
-    // don't need this line as we wil accept every data that comes from the body
-    // let { avatar_url, birth, name, email, blood, weight, height, gender } = req.body
+        return
 
-    birth = Date.parse(req.body.birth)
-    const created_at = Date.now()
-    // const id = Number(data.members.length + 1)
-    let id = 1
-    const lastMember = data.members[data.members.length - 1]
+    },
+    show(req, res) {
 
-    if (lastMember) {
-        id = lastMember.id + 1
-    }
+        return
 
-    // destructuring the body makes variable inside it
-    //apread all over the object, and all equals variable will overwrite the variables already in the object with their data.
-    data.members.push({
-        id,
-        ...req.body,
-        birth,
-        created_at
-    })
+    },
+    edit(req, res) {
 
-    fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) {
-        if (err) return res.send("Error writing file")
+        return
 
-        return res.redirect("/members")
-    })
+    },
+    put(req, res) {
 
-}
+        const keys = Object.keys(req.body)
 
-exports.edit = function (req, res) {
-
-    const { id } = req.params
-
-    const foundMember = data.members.find(function (member) {
-        return id == member.id
-    })
-
-    const member = {
-        ...foundMember,
-        birth: date(foundMember.birth).iso
-    }
-
-    if (!foundMember) return res.send('Member nor found!')
-
-    return res.render('members/edit', { member })
-}
-
-exports.put = function (req, res) {
-    const { id } = req.body
-    let index = 0
-    const foundMember = data.members.find(function (member, memberIndex) {
-        if (id == member.id) {
-            index = memberIndex
-            return true
+        for (key of keys) {
+            if (req.body[key] == "") {
+                return res.send('Please, fill all required fields.')
+            }
         }
-    })
 
-    if (!foundMember) return res.send('Member not found')
+        return
 
-    const member = {
-        ...foundMember,
-        ...req.body,
-        birth: Date.parse(req.body.birth),
-        id: Number(req.body.id)
-    }
+    },
+    delete(req, res) {
 
-    data.members[index] = member
+        return
 
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), function (err) {
-        if (err) return res.send('Error writing file')
-
-        return res.redirect(`/members/${id}`)
-    })
-
-}
-
-exports.delete = function (req, res) {
-
-    const { id } = req.body
-
-    const filteredMembers = data.members.filter(function (members) {
-        return members.id != id
-    })
-
-    data.members = filteredMembers
-
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), function (err) {
-        if (err) return res.send('Error writing file.')
-
-        return res.redirect('/members')
-    })
+    },
 }
