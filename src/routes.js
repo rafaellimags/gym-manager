@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const instructors = require('./src/app/controller/instructors')
-const members = require('./src/app/controller/members')
+const instructors = require('./app/controller/instructors')
+const members = require('./app/controller/members')
 
 /* INSTRUCTORS */
 router.get('/', function (req, res) {
