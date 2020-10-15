@@ -5,10 +5,10 @@ module.exports = {
         db.query(`SELECT * FROM instructors`, function(err, result) {
             if (err) return result.send('Database error.')
 
-            callback(results)
+            callback(result.rows)
         })
     },
     create() {
-        
+
     }
 }
