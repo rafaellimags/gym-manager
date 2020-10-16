@@ -57,14 +57,14 @@ module.exports = {
 
         const query = `
             UPDATE members
-            SET avatar_url=($1),
-                name=($2),
-                birth=($3),
-                gender=($4),
-                blood=($5),
-                weight=($6),
-                height=($7),
-                email=($8)
+            SET avatar_url = $1,
+                name    = $2,
+                birth   = $3,
+                gender  = $4,
+                blood   = $5,
+                weight  = $6,
+                height  = $7,
+                email   = $8
             WHERE id = $9
             RETURNING id
         `
