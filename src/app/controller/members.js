@@ -5,10 +5,10 @@ const Member = require('../models/member')
 module.exports = {
     index(req, res) {
 
-        Member.all(function(members) {
+        Member.all(function (members) {
             return res.render('members/index', { members })
         })
-        
+
     },
     create(req, res) {
 
@@ -31,21 +31,37 @@ module.exports = {
             data.push(req.body[key])
         }
 
-        Member.create(data, function(member) {
+        Member.create(data, function (member) {
             return res.redirect(`/members/${member.id}`)
         })
 
     },
     show(req, res) {
 
-        Member.read(req.params.id, function(member) {
+        Member.read(req.params.id, function (member) {
+
+            member = {
+                ...member,
+                age: age(member.birth)
+            }
+
             return res.render('members/show', { member })
         })
+
+
 
     },
     edit(req, res) {
 
-        return
+        Member.read(req.params.id, function (member) {
+
+            member = {
+                ...member,
+                birth: date(member.birth).iso
+            }
+
+            return res.render('members/edit', { member })
+        })
 
     },
     put(req, res) {
@@ -58,12 +74,22 @@ module.exports = {
             }
         }
 
-        return
+        let data = []
+
+        for (key in req.body) {
+            data.push(req.body[key])
+        }
+
+        Member.update(data, function (member) {
+            return res.redirect(`/members/${member.id}`)
+        })
 
     },
     delete(req, res) {
 
-        return
+        Member.delete(req.body.id, function () {
+            return res.redirect('/members')
+        })
 
     },
 }
