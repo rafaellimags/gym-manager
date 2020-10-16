@@ -1,10 +1,14 @@
 const { age, date } = require('../../lib/utils')
+const member = require('../models/member')
+const Member = require('../models/member')
 
 module.exports = {
     index(req, res) {
 
-        res.render('members/index')
-
+        Member.all(function(members) {
+            return res.render('members/index', { members })
+        })
+        
     },
     create(req, res) {
 
@@ -21,12 +25,22 @@ module.exports = {
             }
         }
 
-        return
+        let data = []
+
+        for (key in req.body) {
+            data.push(req.body[key])
+        }
+
+        Member.create(data, function(member) {
+            return res.redirect(`/members/${member.id}`)
+        })
 
     },
     show(req, res) {
 
-        return
+        Member.read(req.params.id, function(member) {
+            return res.render('members/show', { member })
+        })
 
     },
     edit(req, res) {
