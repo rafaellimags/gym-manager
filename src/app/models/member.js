@@ -26,8 +26,9 @@ module.exports = {
                 blood,
                 weight,
                 height,
-                email
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                email,
+                instructor_id
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
             RETURNING id
         `
         
@@ -41,9 +42,11 @@ module.exports = {
     read(id, callback) {
 
         const query = `
-            SELECT * 
+            SELECT members.*, instructors.name AS instructor_name
             FROM members
-            WHERE id = $1
+            LEFT JOIN instructors
+            ON instructors.id = members.instructor_id
+            WHERE members.id = $1
         `
 
         db.query(query, [id], function(err, results) {
@@ -64,8 +67,9 @@ module.exports = {
                 blood   = $5,
                 weight  = $6,
                 height  = $7,
-                email   = $8
-            WHERE id = $9
+                email   = $8,
+                instructor_id = $9
+            WHERE id = $10
             RETURNING id
         `
 
@@ -88,7 +92,18 @@ module.exports = {
 
             callback()
         })
+    },
+    selectInstructorOption(callback) {
 
+        const query = `
+            SELECT id, name
+            FROM instructors
+        `
 
-    }
+        db.query(query, function(err, results) {
+            if (err) throw `Database ${err}`
+
+            callback(results.rows)
+        })
+    },
 }
