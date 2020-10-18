@@ -18,6 +18,24 @@ module.exports = {
         })
 
     },
+    filter(filter, callback) {
+
+        const query = `
+            SELECT instructors.*, COUNT(members) AS total_membes
+            FROM instructors
+            LEFT JOIN members
+            ON instructors.id = members.instructor_id
+            WHERE instructors.name ILIKE '%${filter}%'
+            OR instructors.services ILIKE '%${filter}%'
+            GROUP BY instructors.id
+        `
+
+        db.query(query, function(err, results) {
+            if (err) throw `Database ${err}`
+
+            callback(results.rows)
+        })
+    },
     create(data, callback) {
 
         const query = `
