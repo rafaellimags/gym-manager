@@ -21,16 +21,6 @@ module.exports = {
         }
 
         Instructor.pagination(params)
-
-        // if (filter) {
-        //     Instructor.filter(filter, function(instructors) {
-        //         return res.render('instructors/index', { instructors, filter })
-        //     })
-        // } else {
-        //     Instructor.all(function(instructors) {
-        //         return res.render("instructors/index", { instructors })
-        //     })
-        // }   
     },
     create(req, res) {
 
