@@ -18,24 +18,55 @@ module.exports = {
         })
 
     },
-    filter(filter, callback) {
+    pagination(params) {
 
-        const query = `
-            SELECT instructors.*, COUNT(members) AS total_membes
+        const { filter, limit, offset, callback} = params
+        
+        let query = `
+            SELECT instructors.*, COUNT(members) as total_members
             FROM instructors
             LEFT JOIN members
             ON instructors.id = members.instructor_id
-            WHERE instructors.name ILIKE '%${filter}%'
-            OR instructors.services ILIKE '%${filter}%'
-            GROUP BY instructors.id
         `
 
-        db.query(query, function(err, results) {
+        if (filter) {
+            query = `${query}
+                WHERE instructors.name ILIKE '%${filter}%'
+                OR instructors.services ILIKE '%${filter}%'
+            ` 
+        }
+
+        query = `${query}
+            GROUP BY instructors.id
+            LIMIT $1
+            OFFSET $2
+        `
+
+        db.query(query, [limit, offset], function(err, results) {
             if (err) throw `Database ${err}`
 
             callback(results.rows)
         })
+
     },
+    // filter(filter, callback) {
+
+    //     const query = `
+    //         SELECT instructors.*, COUNT(members) AS total_membes
+    //         FROM instructors
+    //         LEFT JOIN members
+    //         ON instructors.id = members.instructor_id
+    //         WHERE instructors.name ILIKE '%${filter}%'
+    //         OR instructors.services ILIKE '%${filter}%'
+    //         GROUP BY instructors.id
+    //     `
+
+    //     db.query(query, function(err, results) {
+    //         if (err) throw `Database ${err}`
+
+    //         callback(results.rows)
+    //     })
+    // },
     create(data, callback) {
 
         const query = `
