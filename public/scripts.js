@@ -20,31 +20,51 @@ if (deleteUser) {
     })
 }
 
-let totalPages = 20,
-    currentPage = 6,
-    pages = [],
-    prevPage
+function paginate(currentPage, totalPages) {
+    let pages = [],
+        prevPage
 
-for (let selectedPage = 1; selectedPage <= totalPages; selectedPage++) {
+    // totalPages = 20
+    // currentPage = 6
 
-    const firstAndLastPages = selectedPage == 1 || selectedPage == totalPages
-    const pagesBeforeSelected = selectedPage >= currentPage - 2
-    const pagesAfterSelected = selectedPage <= currentPage + 2
+    for (let selectedPage = 1; selectedPage <= totalPages; selectedPage++) {
 
-    if (firstAndLastPages || pagesBeforeSelected && pagesAfterSelected) {
+        const firstAndLastPages = selectedPage == 1 || selectedPage == totalPages
+        const pagesBeforeSelected = selectedPage >= currentPage - 2
+        const pagesAfterSelected = selectedPage <= currentPage + 2
 
-        if (prevPage && selectedPage - prevPage > 2) {
-            pages.push('...')
+        if (firstAndLastPages || pagesBeforeSelected && pagesAfterSelected) {
+
+            if (prevPage && selectedPage - prevPage > 2) {
+                pages.push('...')
+            }
+
+            if (prevPage && selectedPage - prevPage == 2) {
+                pages.push(selectedPage - 1)
+            }
+
+            pages.push(selectedPage)
+
+            prevPage = selectedPage
         }
+    }
 
-        if (prevPage && selectedPage - prevPage == 2) {
-            pages.push(selectedPage - 1)
-        }
+    return pages
+}
 
-        pages.push(selectedPage)
+const pagination = document.querySelector(".pagination")
+const page = +pagination.dataset.page
+const total = +pagination.dataset.total
+const pages = paginate(page, total)
 
-        prevPage = selectedPage
+let elements = ''
+
+for (let page of pages) {
+    if (String(page).includes('...')) {
+        elements += `<span${page}">${page}</span>`
+    } else {
+        elements += `<a href="?page=${page}">${page}</a>`
     }
 }
 
-console.log(pages)
+pagination.innerHTML = elements
