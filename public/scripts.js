@@ -2,11 +2,9 @@ const currentPath = location.pathname;
 const menuItems = document.querySelectorAll('header .links a')
 const deleteUser = document.querySelector('#form-delete')
 
-// need to compare one variable with another
-// the query brings all child elements. this is to get one by one
 for (let item of menuItems) {
-    if (currentPath.includes(item.getAttribute('href'))) { // element has many props. this is to get the variable from inside the element
-        item.classList.add('active') // this         
+    if (currentPath.includes(item.getAttribute('href'))) {
+        item.classList.add('active')
     }
 }
 
@@ -23,9 +21,6 @@ if (deleteUser) {
 function paginate(currentPage, totalPages) {
     let pages = [],
         prevPage
-
-    // totalPages = 20
-    // currentPage = 6
 
     for (let selectedPage = 1; selectedPage <= totalPages; selectedPage++) {
 
@@ -52,19 +47,29 @@ function paginate(currentPage, totalPages) {
     return pages
 }
 
-const pagination = document.querySelector(".pagination")
-const page = +pagination.dataset.page
-const total = +pagination.dataset.total
-const pages = paginate(page, total)
+const pagination = document.querySelector('.pagination')
 
-let elements = ''
+if (pagination) {
 
-for (let page of pages) {
-    if (String(page).includes('...')) {
-        elements += `<span${page}">${page}</span>`
-    } else {
-        elements += `<a href="?page=${page}">${page}</a>`
+    const filter = pagination.dataset.filter
+    const page = +pagination.dataset.page
+    const total = +pagination.dataset.total
+    const pages = paginate(page, total)
+
+    let elements = ''
+
+    for (let page of pages) {
+        if (String(page).includes('...')) {
+            elements += `<span>${page}</span>`
+        } else {
+            if (filter) {
+                elements += `<a href="?page=${page}&filter=${filter}">${page}</a>`
+            } else {
+                elements += `<a href="?page=${page}">${page}</a>`
+            }
+        }
     }
-}
+    
+    pagination.innerHTML = elements
 
-pagination.innerHTML = elements
+}

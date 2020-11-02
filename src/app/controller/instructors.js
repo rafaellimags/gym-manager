@@ -6,6 +6,8 @@ module.exports = {
 
         let { filter, page, limit } = req.query
 
+        console.log(req.query)
+
         page = page || 1
         limit = limit || 2
         let offset = limit * (page - 1)
@@ -17,6 +19,7 @@ module.exports = {
             offset,
             callback(instructors) {
 
+                console.log(instructors)
                 const pagination = {
                     total: Math.ceil(instructors[0].total / limit),
                     page
