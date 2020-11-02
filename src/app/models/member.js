@@ -8,8 +8,47 @@ module.exports = {
             FROM members
         `
 
-        db.query(query, function(err, results) {
+        db.query(query, function (err, results) {
             if (err) throw `Database ${err}`
+
+            callback(results.rows)
+        })
+
+    },
+    pagination(params) {
+
+        const { filter, limit, offset, callback } = params
+
+        let query = ''
+        let filterQuery = ''
+        let totalQuery = `(
+            SELECT COUNT(*) FROM members
+            ) AS total`
+
+        if (filter) {
+
+            filterQuery =`
+            WHERE members.name ILIKE '%${filter}%'
+            OR members.email ILIKE '%${filter}%'
+            `
+
+            totalQuery = `(
+            SELECT COUNT(*) FROM members
+            ${filterQuery}
+            ) AS total`
+        }
+
+        query = `
+        SELECT members.*, ${totalQuery}
+        FROM members        
+        ${filterQuery}
+        ORDER BY name ASC
+        LIMIT $1
+        OFFSET $2
+        `
+
+        db.query(query, [limit, offset], function (err, results) {
+            if (err)`Database ${err}`
 
             callback(results.rows)
         })
@@ -31,8 +70,8 @@ module.exports = {
             ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
             RETURNING id
         `
-        
-        db.query(query, data, function(err, results) {
+
+        db.query(query, data, function (err, results) {
             if (err) throw `Database ${err}`
 
             callback(results.rows[0])
@@ -49,7 +88,7 @@ module.exports = {
             WHERE members.id = $1
         `
 
-        db.query(query, [id], function(err, results) {
+        db.query(query, [id], function (err, results) {
             if (err) throw `Database ${err}`
 
             callback(results.rows[0])
@@ -73,7 +112,7 @@ module.exports = {
             RETURNING id
         `
 
-        db.query(query, data, function(err, results) {
+        db.query(query, data, function (err, results) {
             if (err) throw `Database ${err}`
 
             callback(results.rows[0])
@@ -87,7 +126,7 @@ module.exports = {
             WHERE id = $1
         `
 
-        db.query(query, [id], function(err, results) {
+        db.query(query, [id], function (err, results) {
             if (err) throw `Database ${err}`
 
             callback()
@@ -100,7 +139,7 @@ module.exports = {
             FROM instructors
         `
 
-        db.query(query, function(err, results) {
+        db.query(query, function (err, results) {
             if (err) throw `Database ${err}`
 
             callback(results.rows)
